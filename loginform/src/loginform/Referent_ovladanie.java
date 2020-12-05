@@ -38,11 +38,11 @@ ResultSet rs = null;
 
     /**
      *
-     * @param IDOFR
+     * @param IDOFR from class Referent 
      */
     public Referent_ovladanie(String IDOFR){
         initComponents();
-        jLabel1.setText(IDOFR);
+        jLabel1.setText(IDOFR); //display ID into jLabel 
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,14 +130,18 @@ ResultSet rs = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-     String labelText = jLabel1.getText();
+     String labelText = jLabel1.getText(); //save text from jLable into variable 
+     /*
+     Select everything from certain table by ID of referent and order by Monday-Friday and time from lowest to highest 
+     Days of week are Strings so it take first letters from A to Z and by CASE we use 1 insted of Monday and order by 1 to 5 
+     */
      String table = "SELECT * FROM APP.REF"+labelText+" ORDER BY CASE WHEN DAY = 'Monday' THEN 1 WHEN DAY = 'Tuesday' THEN 2 WHEN DAY = 'Wednesday' THEN 3 WHEN DAY = 'Thursday' THEN 4 WHEN DAY = 'Friday' THEN 5 END ASC, TIME ASC " ;
      System.out.println(table);
         try {
             ps = con.prepareStatement(table);
             rs = ps.executeQuery();
-            DefaultTableModel tablemodel = new DefaultTableModel(new String[]{"NAME", "SURNAME", "PHONE", "TIME", "DAY"}, 0);
-            while (rs.next()) {
+            DefaultTableModel tablemodel = new DefaultTableModel(new String[]{"NAME", "SURNAME", "PHONE", "TIME", "DAY"}, 0); //create table in window 
+            while (rs.next()) { //saving information from table from database to table in window 
                 String NAME = rs.getString("NAME");
                 String SURNAME = rs.getString("SURNAME");
                 String PHONE = rs.getString("PHONE");
@@ -153,16 +157,20 @@ ResultSet rs = null;
         }        // TODO add your handling code here:
     }//GEN-LAST:event_refreshActionPerformed
 
+    /*
+    DELETE row from table when student is equipped 
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 String labelText = jLabel1.getText();
        int ROW_STUDENT = tableREF.getSelectedRow();
-       String DATA_CELL = tableREF.getModel().getValueAt(ROW_STUDENT, 2).toString();
+       String DATA_CELL = tableREF.getModel().getValueAt(ROW_STUDENT, 2).toString(); //get PHONE number of student 
        String a=DATA_CELL;
-       int num = Integer.parseInt( a );
-       String tableSTUDENT = "DELETE FROM APP.REF"+labelText+" where PHONE="+num ;
+       int num = Integer.parseInt( a ); //convert PHONE to integer 
+       String tableSTUDENT = "DELETE FROM APP.REF"+labelText+" where PHONE="+num ; 
        try {
         ps = con.prepareStatement(tableSTUDENT);
         ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Student was successfully equipped");
     } catch (SQLException ex) {
         Logger.getLogger(Referent_ovladanie.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -211,4 +219,6 @@ String labelText = jLabel1.getText();
     private javax.swing.JButton refresh;
     private javax.swing.JTable tableREF;
     // End of variables declaration//GEN-END:variables
+
 }
+

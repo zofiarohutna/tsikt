@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 public class javaconnect {
 
     /**
-     *
      * @return con  
      * Method which call for connection to database in other classes
      */

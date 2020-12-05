@@ -154,19 +154,19 @@ ResultSet rs = null;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        String loginR = " SELECT * FROM APP.ALLREFERENTS WHERE NAME=? AND PASSWORD=? AND ID_REF=?";
+        String loginR = " SELECT * FROM APP.ALLREFERENTS WHERE NAME=? AND PASSWORD=? AND ID_REF=?"; //check if the referent is in the table 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
         try {
-            ps=con.prepareStatement(loginR);
-            ps.setString(1, usernameR.getText());
-            ps.setString(2, passwordR.getText());
-            ps.setString(3, ID_REF.getText());
+            ps=con.prepareStatement(loginR); //connection to database 
+            ps.setString(1, usernameR.getText()); //send userane from textfield to select 
+            ps.setString(2, passwordR.getText()); //send password to select
+            ps.setString(3, ID_REF.getText()); //send id to select
             
-            rs=ps.executeQuery();
-            if(rs.next()){
-                String insertR = "INSERT into APP.REGISTER_REF(TIME_REF,NAME_REF,ID_REF) values (?,?,?)";
-                ps=con.prepareStatement(insertR);
+            rs=ps.executeQuery(); //use select with variables upper and save it to rs
+            if(rs.next()){ //if select found something
+                String insertR = "INSERT into APP.REGISTER_REF(TIME_REF,NAME_REF,ID_REF) values (?,?,?)"; //save referent login to table 
+                ps=con.prepareStatement(insertR); 
                 ps.setString(1, timestamp.toString());
                 ps.setString(2, usernameR.getText());
                 ps.setString(3, ID_REF.getText());
@@ -177,9 +177,9 @@ ResultSet rs = null;
                 dispose();
                 
                 
-                new Referent_ovladanie(IDOFR).setVisible(true);
+                new Referent_ovladanie(IDOFR).setVisible(true); //open new window and send IDOFR to the new class 
             }else {
-                JOptionPane.showMessageDialog(null,"Login fail!");
+                JOptionPane.showMessageDialog(null,"Login fail!"); //if select did not find anything
             }
             
             

@@ -28,6 +28,7 @@ String tablename;
 
     /**
      * Creates new form Student
+     * 
      */
     public Student() {
         initComponents();
@@ -308,8 +309,9 @@ String tablename;
                 ps.executeUpdate(); //update table 
                 JOptionPane.showMessageDialog(null,"Successful registration \n Your term is at " +timechoice.getSelectedItem());
                 dispose();
+                String phone_number = phone.getText();
                 new welcome().setVisible(true); //show window with information about Covid 
-                
+               
         }
         
             
@@ -336,7 +338,7 @@ String tablename;
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments 
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
