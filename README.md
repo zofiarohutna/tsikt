@@ -2,8 +2,8 @@
 
 ## Contents
 				
- - [TSIKT Assignment](#assignment)
- - [Our application](#application)
+ - [TSIKT Assignment](#TSIKT-assignment)
+ - [Our application](#our-application)
      * [Connection](#connection)
      * [Choice window](#choice-window)
      * [Student mode](#student-mode)   
@@ -53,7 +53,7 @@ that you are really its author). The basic evaluation of the functionality will 
 at the exercise, a detailed evaluation of the entire solution, including the supplied
 documentation will continue.
 
-## OUR APPLICATION 
+## Our application
 Our application helps to reduce the amount of students in PGO. Students are able to register that they want to visit their PGO referent (for 1st 2nd and 3rd grade of bachelor studium. It is possible to register also for people that are not students of FEI because the app does not work with ais database but students can register by their name and phone number. 
 
 ### Connection 
