@@ -59,8 +59,12 @@ ResultSet rs = null;
         jLabel1 = new javax.swing.JLabel();
         refresh = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(720, 510));
+        getContentPane().setLayout(null);
 
         tableREF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,56 +79,52 @@ ResultSet rs = null;
         ));
         jScrollPane1.setViewportView(tableREF);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(330, 0, 369, 360);
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel11.setText("Logged referent (ID) :");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(20, 20, 260, 40);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic", 3, 18)); // NOI18N
         jLabel1.setText("X");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(220, 30, 40, 20);
 
-        refresh.setText("Refresh");
+        refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Programis/programovanie_button/button_refresh (1).png"))); // NOI18N
+        refresh.setContentAreaFilled(false);
         refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshActionPerformed(evt);
             }
         });
+        getContentPane().add(refresh);
+        refresh.setBounds(400, 360, 240, 100);
 
-        jButton2.setText("Delete");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Programis/programovanie_button/button_student-finished (1).png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(-20, 20, 370, 180);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(refresh)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refresh)
-                    .addComponent(jButton2))
-                .addGap(99, 99, 99))
-        );
+        Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Programis/programovanie_button/button_logout (2).png"))); // NOI18N
+        Logout.setContentAreaFilled(false);
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Logout);
+        Logout.setBounds(0, 370, 200, 80);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Programis/9992992C-6635-4AA4-9DA0-313EF9BC21D7.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 840, 460);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,11 +170,16 @@ String labelText = jLabel1.getText();
        try {
         ps = con.prepareStatement(tableSTUDENT);
         ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Student was successfully equipped");
     } catch (SQLException ex) {
         Logger.getLogger(Referent_ovladanie.class.getName()).log(Level.SEVERE, null, ex);
     }
+       refreshActionPerformed(evt); 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        dispose();
+        new Choice().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,9 +217,11 @@ String labelText = jLabel1.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Logout;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refresh;
     private javax.swing.JTable tableREF;
