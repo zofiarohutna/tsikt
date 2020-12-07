@@ -65,7 +65,7 @@ Our application helps to reduce the amount of students in PGO. Students are able
 ### Choice window 
 **STUDENT mode button** opens registration form for students
 
-**REFERENT mode button** opens login form for clerks
+**REFERENT mode button** opens login form for referents
 
 ### Student mode
 - After the user has chosen Student mode in the first window he can see registration form for student 
@@ -92,10 +92,10 @@ After successful registration student could see window with information and rest
 ### REFERENT mode
 
 #### REFERENT login
-- After the user has chosen Referent mode in the first window, he can see Clerk loginform
-- Clerks have to login with their username, password and ID and press **login button** 
+- After the user has chosen Referent mode in the first window, he can see Referent loginform
+- Referents have to login with their username, password and ID and press **login button** 
 - System checks if the row with username, passoword and ID occures in the evidence table 
-- If username passoword and ID occures in the table, the clerk is successfully logged into the Clerk manager 
+- If username passoword and ID occures in the table, the referent is successfully logged into the Referent manager 
 
 Referent's login details   
 
@@ -107,13 +107,13 @@ Referent's login details
 
 
 #### REFERENT manager 
-Clerk can see empty **login table**, **REFRESH** button and **DELETE** button and **LOG OUT** button
+Referennt can see empty **login table**, **REFRESH** button and **DELETE** button and **LOG OUT** button
 
 **REFRESH button**
 1. System uses referent's ID to show certain table from database for each referent
 2. Program selects everything from certain table and orders it by days of week (Monday to Friday) and by time (lowest to highest) and displays it in the empty table
 	* Days of week are Strings but with CASE command we replaced strings (monday) with numbers (1) and order it from lowest to highest
-3. Every time referet presses the button, system shows actual data from the table
+3. Every time referent presses the button, system shows actual data from the table
 
 **DELETE button**
 1. Referent selects the row to be deleted (student is equipped)
